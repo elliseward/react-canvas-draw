@@ -9,68 +9,196 @@ class Demo extends Component {
     color: "#ffc600",
     width: 400,
     height: 400,
-    brushRadius: 10,
-    lazyRadius: 12
+    brushRadius: 1,
+    lazyRadius: 0
   };
   componentDidMount() {
-    // let's change the color randomly every 2 seconds. fun!
-    window.setInterval(() => {
-      this.setState({
-        color: "#" + Math.floor(Math.random() * 16777215).toString(16)
-      });
-    }, 2000);
+    this.setState({
+      color: "rgba(255,255,0,1)",
+    });
+    // window.setInterval(() => {
+    //   this.setState({
+    //     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
+    //   });
+    // }, 2000);
   }
   render() {
     return (
       <div>
-        <h1>React Canvas Draw</h1>
-        <iframe
+        {/* <h1>(Th)ink Canvas</h1> */}
+        {/* <iframe
           title="GitHub link"
           src="https://ghbtns.com/github-btn.html?user=embiem&repo=react-canvas-draw&type=star&count=true"
           frameBorder="0"
           scrolling="0"
           width="160px"
           height="30px"
-        />
-        <h2>default</h2>
-        <p>
+        /> */}
+        {/* <h2>default</h2> */}
+        {/* <p>
           This is a simple <span>{`<CanvasDraw />`}</span> component with
           default values.
-        </p>
-        <p>Try it out! Draw on this white canvas:</p>
-        <CanvasDraw onChange={() => console.log("onChange")} />
-        <h2>Custom Brush-Color</h2>
+        </p> */}
+        {/* <p>Try it out! Draw on this white canvas:</p> */}
+        {/* <CanvasDraw onChange={() => console.log("onChange")} /> */}
+        <h2>(Th)ink Canvas</h2>
         <p>
-          Let's spice things up by using custom brush colors{" "}
-          <span>{`<CanvasDraw brushColor={this.state.color} />`}</span>. We
-          randomly change them every 2 seconds. But you could easily use a
-          color-picker!
+          {" "}
+          {/* <span>{`<CanvasDraw brushColor={this.state.color} />`}</span>. */}
+          Color changes every 2 seconds:
         </p>
         <div>
           Current color:{" "}
           <div
             style={{
               display: "inline-block",
-              width: "24px",
-              height: "24px",
+              width: "20px",
+              height: "20px",
               backgroundColor: this.state.color,
               border: "1px solid #272727"
             }}
           />
         </div>
         <CanvasDraw brushColor={this.state.color} />
-        <h2>Background Image</h2>
-        <p>You can also set the `imgSrc` prop to draw on a background-image.</p>
         <p>
-          It will automatically resize to fit the canvas and centered vertically
-          & horizontally.
+          <p></p>
         </p>
+        <h2>(Th)ink Coloring Book</h2>
+        <p></p>
+        <p>
+        </p>    
+        <h4>Use buttons to select colors, save image, undo last stroke and clear page. </h4>
+        <div>
+          Current color:{" "}
+          <div
+            style={{
+              display: "inline-block",
+              width: "20px",
+              height: "20px",
+              backgroundColor: this.state.color, //"rgba(255,255,0,100)",
+              border: "1px solid #272727"
+            }}
+          />
+        </div>
+        <p></p>
+        <div className={classNames.tools}>
+          <button
+            onClick={() => {
+              localStorage.setItem(
+                "savedDrawing",
+                this.saveableCanvas.getSaveData()
+              );
+            }}
+            style={{
+              display: "inline-block",
+              width: "50px",
+              height: "20px",
+              backgroundColor: "rgba(255,255,255,100)",
+              border: "1px solid #272727"
+            }}
+          >
+            Save
+          </button>
+          <button
+            onClick={() => {
+              this.saveableCanvas.clear();
+            }}
+            style={{
+              display: "inline-block",
+              width: "50px",
+              height: "20px",
+              backgroundColor: "rgba(255,255,255,100)",
+              border: "1px solid #272727"
+            }}
+
+          >
+            Clear
+          </button>
+          <button
+            onClick={() => {
+              this.saveableCanvas.undo();
+            }}
+            style={{
+              display: "inline-block",
+              width: "50px",
+              height: "20px",
+              backgroundColor: "rgba(255,255,255,100)",
+              border: "1px solid #272727"
+            }}
+          >
+            Undo
+          </button>
+          <div>
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(255,255,0,.500)"
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "50px",
+              height: "20px",
+              backgroundColor: "rgba(255,255,0,1)",
+              border: "1px solid #272727"
+            }}
+            
+          >
+            Yellow
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(60,235,0,0.5)"
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "50px",
+              height: "20px",
+              backgroundColor: "rgba(60,235,0,1)",
+              border: "1px solid #272727"
+            }}
+            
+          >
+            Green
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(255,67,73,0.5)"
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "50px",
+              height: "20px",
+              backgroundColor: "rgba(255,67,73,1)",
+              border: "1px solid #272727"
+            }}
+            
+          >
+            Red
+          </button>
+          </div>
+          <p></p>
+          
+        </div>
         <CanvasDraw
-          brushColor="rgba(155,12,60,0.3)"
-          imgSrc="https://upload.wikimedia.org/wikipedia/commons/a/a1/Nepalese_Mhapuja_Mandala.jpg"
+          ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
+          brushColor={this.state.color}//"rgba(255,255,0,.50)"
+          imgSrc="https://upload.wikimedia.org/wikipedia/commons/c/cb/Coloring_kids_games_to_play.png"
+          
         />
-        <h2>Hide UI</h2>
-        <p>To hide the UI elements, set the `hideInterface` prop. You can also hide the grid with the `hideGrid` prop.</p>
+        
+{/*     
+        <h2>
+
+          
+        </h2>
+        <p>
+          
+          To hide the UI elements, set the `hideInterface` prop. You can also hide the grid with the `hideGrid` prop.</p>
         <CanvasDraw hideInterface hideGrid />
         <h2>Save & Load</h2>
         <p>
@@ -169,8 +297,8 @@ class Demo extends Component {
           Load what you saved previously into the following canvas. Either by
           calling `loadSaveData()` on the component's reference or passing it
           the `saveData` prop:
-        </button>
-        <CanvasDraw
+        </button> */}
+        {/* <CanvasDraw
           disabled
           hideGrid
           ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
@@ -188,7 +316,7 @@ class Demo extends Component {
             source code of these examples
           </a>
           .
-        </p>
+        </p> */}
       </div>
     );
   }
