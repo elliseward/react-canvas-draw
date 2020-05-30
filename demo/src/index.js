@@ -10,7 +10,9 @@ class Demo extends Component {
     width: 400,
     height: 400,
     brushRadius: 1,
-    lazyRadius: 0
+    lazyRadius: 0,
+    gridColor: "rgba(150,150,150,1)",
+    hideGrid: true,
   };
   componentDidMount() {
     this.setState({
@@ -22,9 +24,12 @@ class Demo extends Component {
     //   });
     // }, 2000);
   }
+
+
   render() {
     return (
       <div>
+
         {/* <h1>(Th)ink Canvas</h1> */}
         {/* <iframe
           title="GitHub link"
@@ -41,14 +46,15 @@ class Demo extends Component {
         </p> */}
         {/* <p>Try it out! Draw on this white canvas:</p> */}
         {/* <CanvasDraw onChange={() => console.log("onChange")} /> */}
-        <h2>(Th)ink Canvas</h2>
-        <p>
-          {" "}
+        <img src="demo/ShiftedImage.png" alt="(Th)ink Logo" width="800" height="190"></img>
+        
+        {/* <p>
+          {" "} */}
           {/* <span>{`<CanvasDraw brushColor={this.state.color} />`}</span>. */}
-          Color changes every 2 seconds:
-        </p>
+          {/* Color changes every 2 seconds:
+        </p> */}
         <div>
-          Current color:{" "}
+          {/* Current color:{" "}
           <div
             style={{
               display: "inline-block",
@@ -57,9 +63,81 @@ class Demo extends Component {
               backgroundColor: this.state.color,
               border: "1px solid #272727"
             }}
-          />
+          /> */}
+          <button
+            onClick={() => {
+              this.setState({
+                hideGrid: !hideGrid,
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "100px",
+              height: "20px",
+              backgroundColor: "#FFF",
+              border: "1px solid #272727"
+            }}
+          >
+            Hide Grid
+          
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                brushRadius: "5",
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "50px",
+              height: "50px",
+              backgroundColor: "#FFF",
+              border: "1px solid #272727",
+              borderRadius: "25px", 
+            }}
+            
+          >
+            Small
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                brushRadius: "10",
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "70px",
+              height: "70px",
+              backgroundColor: "#FFF",
+              border: "1px solid #272727",
+              borderRadius: "35px", 
+            }}
+            
+          >
+            Medium
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                brushRadius: "15",
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "90px",
+              height: "90px",
+              backgroundColor: "#FFF",
+              border: "1px solid #272727",
+              borderRadius: "55px", 
+            }}
+            
+          >
+            Large
+          </button>
         </div>
-        <CanvasDraw brushColor={this.state.color} />
+        <CanvasDraw brushColor={this.state.color} brushRadius={this.state.brushRadius} gridColor={this.state.gridColor} hideGrid={this.state.hideGrid} />
+        
         <p>
           <p></p>
         </p>
@@ -180,6 +258,7 @@ class Demo extends Component {
           >
             Red
           </button>
+
           </div>
           <p></p>
           
