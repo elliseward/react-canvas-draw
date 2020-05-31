@@ -145,50 +145,76 @@ class Demo extends Component {
               height: "50px",
               backgroundColor: "#FFF",
               border: "3px solid #272727",
-              float: "right",
+              float: "left",
               fontSize: "20px",
+              borderRadius: "10px",
             }}
           >
             Hide Grid
           
           </button>
           
-        <p>
-          <p></p>
-        </p>
-        <h2>(Th)ink Coloring Book</h2>
-        <p></p>
-        <p>
-        </p>    
-        <h4>Use buttons to select colors, save image, undo last stroke and clear page. </h4>
-        {/* <div>
-          Current color:{" "}
-          <div
-            style={{
-              display: "inline-block",
-              width: "20px",
-              height: "20px",
-              backgroundColor: this.state.color, 
-              border: "1px solid #272727"
-            }}
-          />
-        </div> */}
-        <p></p>
-        <div > 
-          {/* className={classNames.tools} */}
-          <div>
-          {/* Current color:{" "}
-          <div
-            style={{
-              display: "inline-block",
-              width: "20px",
-              height: "20px",
-              backgroundColor: this.state.color,
-              border: "1px solid #272727"
-            }}
-          /> */}
 
+          {/* <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(255,255,0,.500)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(255,255,0,1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "right"
+            }}
+            
+          >
+            Yellow
+          </button>
           <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(60,235,0,0.5)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(60,235,0,1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "right"
+            }}
+            
+          >
+            Green
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(255,67,73,0.5)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(255,67,73,1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "right"
+            }}
+            
+          >
+            Red
+          </button> */}
+
+
+          {/* <button
             onClick={() => {
               this.setState({
                 brushRadius: "15",
@@ -222,7 +248,8 @@ class Demo extends Component {
               backgroundColor: "#FFF",
               border: "3px solid #272727",
               borderRadius: "35px", 
-              float: "right"
+              float: "right",
+              clear: "left"
             }}
             
           >
@@ -247,80 +274,27 @@ class Demo extends Component {
             
           >
             Small
-          </button>
-          
-          </div>
-          <div>
-            
-          <br />
-          <br />
-          <br />
-          <br />
-          <button
-            onClick={() => {
-              this.setState({
-                color: "rgba(255,255,0,.500)"
-              });
-            }}
-            style={{
-              display: "inline-block",
-              width: "100px",
-              height: "100px",
-              backgroundColor: "rgba(255,255,0,1)",
-              border: "3px solid #272727",
-              fontSize: "15px",
-              float: "right"
-            }}
-            
-          >
-            Yellow
-          </button>
-          <button
-            onClick={() => {
-              this.setState({
-                color: "rgba(60,235,0,0.5)"
-              });
-            }}
-            style={{
-              display: "inline-block",
-              width: "100px",
-              height: "100px",
-              backgroundColor: "rgba(60,235,0,1)",
-              border: "3px solid #272727",
-              fontSize: "15px",
-              float: "right"
-            }}
-            
-          >
-            Green
-          </button>
-          <button
-            onClick={() => {
-              this.setState({
-                color: "rgba(255,67,73,0.5)"
-              });
-            }}
-            style={{
-              display: "inline-block",
-              width: "100px",
-              height: "100px",
-              backgroundColor: "rgba(255,67,73,1)",
-              border: "3px solid #272727",
-              fontSize: "15px",
-              float: "right"
-            }}
-            
-          >
-            Red
-          </button>
-          <br />
-          <br />
-          <br />
-          <br />
-          </div>
+          </button> */}
+        {/* <p>
           <p></p>
-          
-        </div>
+        </p>
+        <h2>(Th)ink Coloring Book</h2>
+        <p></p>
+        <p>
+        </p>    
+        <h4>Use buttons to select colors, save image, undo last stroke and clear page. </h4> */}
+        {/* <div>
+          Current color:{" "}
+          <div
+            style={{
+              display: "inline-block",
+              width: "20px",
+              height: "20px",
+              backgroundColor: this.state.color, 
+              border: "1px solid #272727"
+            }}
+          />
+        </div> */}
 
         <CanvasDraw
           ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
@@ -328,6 +302,20 @@ class Demo extends Component {
           //imgSrc="https://upload.wikimedia.org/wikipedia/commons/c/cb/Coloring_kids_games_to_play.png"
           
         />
+        <div > 
+          {/* className={classNames.tools} */}
+          <div>
+          {/* Current color:{" "}
+          <div
+            style={{
+              display: "inline-block",
+              width: "20px",
+              height: "20px",
+              backgroundColor: this.state.color,
+              border: "1px solid #272727"
+            }}
+          /> */}
+        <div><br></br><br></br><br></br></div>
                   <button
             onClick={() => {
               localStorage.setItem(
@@ -337,12 +325,14 @@ class Demo extends Component {
             }}
             style={{
               display: "inline-block",
-              width: "100px",
+              width: "80px",
               height: "50px",
               backgroundColor: "rgba(255,255,255,100)",
               border: "3px solid #272727",
-              float: "right",
+              float: "left",
               fontSize: "20px",
+              margin: "0px 0px",
+              borderRadius: "10px",
             }}
           >
             Save
@@ -353,12 +343,14 @@ class Demo extends Component {
             }}
             style={{
               display: "inlinelock",
-              width: "100px",
+              width: "80px",
               height: "50px",
               backgroundColor: "rgba(255,255,255,100)",
               border: "3px solid #272727",
-              float: "right",
+              float: "left",
               fontSize: "20px",
+              margin: "0px 10px",
+              borderRadius: "10px",
             }}
 
           >
@@ -370,16 +362,297 @@ class Demo extends Component {
             }}
             style={{
               display: "inline-block",
-              width: "100px",
+              width: "80px",
               height: "50px",
               backgroundColor: "rgba(255,255,255,100)",
               border: "3px solid #272727",
-              float: "right",
+              float: "left",
               fontSize: "20px",
+              margin: "0px 0px",
+              borderRadius: "10px",
             }}
           >
             Undo
           </button>
+          <p></p>
+
+          <button
+            onClick={() => {
+              this.setState({
+                brushRadius: "10",
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "90px",
+              height: "90px",
+              backgroundColor: "#fff",
+              border: "3px solid #272727",
+              borderRadius: "55px", 
+              fontSize : "24px",
+              float: "left",
+              margin: "10px 0px",
+              color: "#272727",
+              clear: "left"
+            }}
+            
+          >
+            Large
+          </button>
+ 
+          <button
+            onClick={() => {
+              this.setState({
+                brushRadius: "5",
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "70px",
+              height: "70px",
+              fontSize: "15px",
+              backgroundColor: "#FFF",
+              border: "3px solid #272727",
+              borderRadius: "35px", 
+              float: "left",
+              textAlign: "center",
+              margin: "20px 20px",
+            }}
+            
+          >
+          Medium
+          </button>
+
+          <button
+            onClick={() => {
+              this.setState({
+                brushRadius: "1",
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "50px",
+              height: "50px",
+              backgroundColor: "#FFF",
+              fontSize : "13px",
+              border: "3px solid #272727",
+              borderRadius: "25px", 
+              float: "left",
+              margin: "30px 0px",
+            }}
+            
+          >
+            Small
+          </button>
+          
+          </div>
+          <div>
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(255,0,0,.800)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(255,0,0,1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "left",
+              margin: "10px 0px",
+              borderRadius: "10px",
+              color: "#FFF",
+              clear: "left"
+            }}
+            
+          >
+            Red
+          </button>
+          
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(255, 116, 0, 0.8)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(255, 116, 0, 1)",
+              border: "3px solid #272727",
+              fontSize: "14px",
+              float: "left",
+              margin: "10px 20px",
+              borderRadius: "10px",
+              padding: "0px",
+            }}
+            
+          >
+            Orange
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(255, 240, 0, 0.8)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(255, 240, 0,1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "left",
+              margin: "10px 0px",
+              borderRadius: "10px",
+            }}
+            
+          >
+            Yellow
+          </button>  
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(62, 255, 0, 0.8)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(62, 255, 0, 1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "left",
+              margin: "10px 0px",
+              borderRadius: "10px",
+              clear: "left"
+            }}
+            
+          >
+            Green
+          </button>  
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(0, 197, 255, 0.8)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(0, 197, 255, 1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "left",
+              margin: "10px 20px",
+              borderRadius: "10px",
+            }}
+            
+          >
+            Blue
+          </button> 
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(0, 39, 255, 0.8)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(0, 39, 255, 1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "left",
+              margin: "10px 0px",
+              borderRadius: "10px",
+              color: "#FFF",
+            }}
+            
+          >
+            Indigo
+          </button> 
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(174, 0, 255 , 0.8)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(174, 0, 255 , 1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "left",
+              margin: "10px 0px",
+              borderRadius: "10px",
+              color: "#FFF",
+              clear: "left"
+            }}
+            
+          >
+            Purple
+          </button> 
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(0, 0, 0 , 0.8)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(0, 0, 0 , 1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "left",
+              margin: "10px 20px",
+              borderRadius: "10px",
+              color: "#FFF",
+            }}
+            
+          >
+            Black
+          </button> 
+          <button
+            onClick={() => {
+              this.setState({
+                color: "rgba(250, 250, 250 , 0.8)"
+              });
+            }}
+            style={{
+              display: "block",
+              width: "60px",
+              height: "60px",
+              backgroundColor: "rgba(250, 250, 250 , 1)",
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "left",
+              margin: "10px 0px",
+              borderRadius: "10px",
+            }}
+            
+          >
+            White
+          </button> 
+
+          </div>
+          <p></p>
+          
+        </div>
+
+        
+                  
 {/*     
         <h2>
 

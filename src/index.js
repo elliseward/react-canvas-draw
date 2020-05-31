@@ -74,7 +74,7 @@ export default class extends PureComponent {
     backgroundColor: "#FFF",
     hideGrid: false,
     canvasWidth: "70%", //900,
-    canvasHeight: 500,
+    canvasHeight: 450,
     disabled: false,
     imgSrc: "",
     saveData: "",
@@ -560,6 +560,7 @@ export default class extends PureComponent {
         className={this.props.className}
         style={{
           display: "block",
+          float:"right",
           background: this.props.backgroundColor,
           touchAction: "none",
           width: this.props.canvasWidth,
