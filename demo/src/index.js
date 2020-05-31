@@ -6,17 +6,17 @@ import classNames from "./index.css";
 
 class Demo extends Component {
   state = {
-    color: "#ffc600",
+    color: "#ff2600",
     width: 400,
     height: 400,
     brushRadius: 1,
     lazyRadius: 0,
     gridColor: "rgba(150,150,150,1)",
-    hideGrid: true,
+    hideGrid: false,
   };
   componentDidMount() {
     this.setState({
-      color: "rgba(255,255,0,1)",
+      color: "#ff2600"//"rgba(255,255,0,1)",
     });
     // window.setInterval(() => {
     //   this.setState({
@@ -29,7 +29,6 @@ class Demo extends Component {
   render() {
     return (
       <div>
-
         {/* <h1>(Th)ink Canvas</h1> */}
         {/* <iframe
           title="GitHub link"
@@ -46,14 +45,21 @@ class Demo extends Component {
         </p> */}
         {/* <p>Try it out! Draw on this white canvas:</p> */}
         {/* <CanvasDraw onChange={() => console.log("onChange")} /> */}
-        <img src="demo/ShiftedImage.png" alt="(Th)ink Logo" width="800" height="190"></img>
-        
+        <img src="demo/CenteredBorderLogo.png" alt="(Th)ink Logo" 
+        width="65%" height="50%" 
+        >
+          
+        </img>
+        <h2>
+
+
+        </h2>
         {/* <p>
           {" "} */}
           {/* <span>{`<CanvasDraw brushColor={this.state.color} />`}</span>. */}
           {/* Color changes every 2 seconds:
         </p> */}
-        <div>
+        {/* <div> */}
           {/* Current color:{" "}
           <div
             style={{
@@ -64,22 +70,46 @@ class Demo extends Component {
               border: "1px solid #272727"
             }}
           /> */}
+{/* 
           <button
             onClick={() => {
               this.setState({
-                hideGrid: !hideGrid,
+                brushRadius: "15",
               });
             }}
             style={{
               display: "inline-block",
-              width: "100px",
-              height: "20px",
+              width: "90px",
+              height: "90px",
               backgroundColor: "#FFF",
-              border: "1px solid #272727"
+              border: "3px solid #272727",
+              borderRadius: "55px", 
+              fontSize : "24px",
+              float: "right"
             }}
+            
           >
-            Hide Grid
-          
+            Large
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                brushRadius: "10",
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "70px",
+              height: "70px",
+              fontSize: "15px",
+              backgroundColor: "#FFF",
+              border: "3px solid #272727",
+              borderRadius: "35px", 
+              float: "right"
+            }}
+            
+          >
+          Medium
           </button>
           <button
             onClick={() => {
@@ -92,31 +122,72 @@ class Demo extends Component {
               width: "50px",
               height: "50px",
               backgroundColor: "#FFF",
-              border: "1px solid #272727",
+              fontSize : "14px",
+              border: "3px solid #272727",
               borderRadius: "25px", 
+              float: "right"
             }}
             
           >
             Small
           </button>
-          <button
+        </div> */}
+        {/* <CanvasDraw brushColor={this.state.color} brushRadius={this.state.brushRadius} gridColor={this.state.gridColor} hideGrid={this.state.hideGrid} /> */}
+        <button
             onClick={() => {
               this.setState({
-                brushRadius: "10",
+                hideGrid: !hideGrid,
               });
             }}
             style={{
               display: "inline-block",
-              width: "70px",
-              height: "70px",
+              width: "200px",
+              height: "50px",
               backgroundColor: "#FFF",
-              border: "1px solid #272727",
-              borderRadius: "35px", 
+              border: "3px solid #272727",
+              float: "right",
+              fontSize: "20px",
             }}
-            
           >
-            Medium
+            Hide Grid
+          
           </button>
+          
+        <p>
+          <p></p>
+        </p>
+        <h2>(Th)ink Coloring Book</h2>
+        <p></p>
+        <p>
+        </p>    
+        <h4>Use buttons to select colors, save image, undo last stroke and clear page. </h4>
+        {/* <div>
+          Current color:{" "}
+          <div
+            style={{
+              display: "inline-block",
+              width: "20px",
+              height: "20px",
+              backgroundColor: this.state.color, 
+              border: "1px solid #272727"
+            }}
+          />
+        </div> */}
+        <p></p>
+        <div > 
+          {/* className={classNames.tools} */}
+          <div>
+          {/* Current color:{" "}
+          <div
+            style={{
+              display: "inline-block",
+              width: "20px",
+              height: "20px",
+              backgroundColor: this.state.color,
+              border: "1px solid #272727"
+            }}
+          /> */}
+
           <button
             onClick={() => {
               this.setState({
@@ -128,85 +199,63 @@ class Demo extends Component {
               width: "90px",
               height: "90px",
               backgroundColor: "#FFF",
-              border: "1px solid #272727",
+              border: "3px solid #272727",
               borderRadius: "55px", 
+              fontSize : "24px",
+              float: "right"
             }}
             
           >
             Large
           </button>
-        </div>
-        <CanvasDraw brushColor={this.state.color} brushRadius={this.state.brushRadius} gridColor={this.state.gridColor} hideGrid={this.state.hideGrid} />
-        
-        <p>
-          <p></p>
-        </p>
-        <h2>(Th)ink Coloring Book</h2>
-        <p></p>
-        <p>
-        </p>    
-        <h4>Use buttons to select colors, save image, undo last stroke and clear page. </h4>
-        <div>
-          Current color:{" "}
-          <div
-            style={{
-              display: "inline-block",
-              width: "20px",
-              height: "20px",
-              backgroundColor: this.state.color, //"rgba(255,255,0,100)",
-              border: "1px solid #272727"
-            }}
-          />
-        </div>
-        <p></p>
-        <div className={classNames.tools}>
           <button
             onClick={() => {
-              localStorage.setItem(
-                "savedDrawing",
-                this.saveableCanvas.getSaveData()
-              );
+              this.setState({
+                brushRadius: "10",
+              });
+            }}
+            style={{
+              display: "inline-block",
+              width: "70px",
+              height: "70px",
+              fontSize: "15px",
+              backgroundColor: "#FFF",
+              border: "3px solid #272727",
+              borderRadius: "35px", 
+              float: "right"
+            }}
+            
+          >
+          Medium
+          </button>
+          <button
+            onClick={() => {
+              this.setState({
+                brushRadius: "5",
+              });
             }}
             style={{
               display: "inline-block",
               width: "50px",
-              height: "20px",
-              backgroundColor: "rgba(255,255,255,100)",
-              border: "1px solid #272727"
+              height: "50px",
+              backgroundColor: "#FFF",
+              fontSize : "14px",
+              border: "3px solid #272727",
+              borderRadius: "25px", 
+              float: "right"
             }}
+            
           >
-            Save
+            Small
           </button>
-          <button
-            onClick={() => {
-              this.saveableCanvas.clear();
-            }}
-            style={{
-              display: "inline-block",
-              width: "50px",
-              height: "20px",
-              backgroundColor: "rgba(255,255,255,100)",
-              border: "1px solid #272727"
-            }}
-
-          >
-            Clear
-          </button>
-          <button
-            onClick={() => {
-              this.saveableCanvas.undo();
-            }}
-            style={{
-              display: "inline-block",
-              width: "50px",
-              height: "20px",
-              backgroundColor: "rgba(255,255,255,100)",
-              border: "1px solid #272727"
-            }}
-          >
-            Undo
-          </button>
+          
+          </div>
           <div>
+            
+          <br />
+          <br />
+          <br />
+          <br />
           <button
             onClick={() => {
               this.setState({
@@ -215,10 +264,12 @@ class Demo extends Component {
             }}
             style={{
               display: "inline-block",
-              width: "50px",
-              height: "20px",
+              width: "100px",
+              height: "100px",
               backgroundColor: "rgba(255,255,0,1)",
-              border: "1px solid #272727"
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "right"
             }}
             
           >
@@ -232,10 +283,12 @@ class Demo extends Component {
             }}
             style={{
               display: "inline-block",
-              width: "50px",
-              height: "20px",
+              width: "100px",
+              height: "100px",
               backgroundColor: "rgba(60,235,0,1)",
-              border: "1px solid #272727"
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "right"
             }}
             
           >
@@ -249,27 +302,84 @@ class Demo extends Component {
             }}
             style={{
               display: "inline-block",
-              width: "50px",
-              height: "20px",
+              width: "100px",
+              height: "100px",
               backgroundColor: "rgba(255,67,73,1)",
-              border: "1px solid #272727"
+              border: "3px solid #272727",
+              fontSize: "15px",
+              float: "right"
             }}
             
           >
             Red
           </button>
-
+          <br />
+          <br />
+          <br />
+          <br />
           </div>
           <p></p>
           
         </div>
+
         <CanvasDraw
           ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
-          brushColor={this.state.color}//"rgba(255,255,0,.50)"
-          imgSrc="https://upload.wikimedia.org/wikipedia/commons/c/cb/Coloring_kids_games_to_play.png"
+          brushColor={this.state.color} brushRadius={this.state.brushRadius} gridColor={this.state.gridColor} hideGrid={this.state.hideGrid}//"rgba(255,255,0,.50)"
+          //imgSrc="https://upload.wikimedia.org/wikipedia/commons/c/cb/Coloring_kids_games_to_play.png"
           
         />
-        
+                  <button
+            onClick={() => {
+              localStorage.setItem(
+                "savedDrawing",
+                this.saveableCanvas.getSaveData()
+              );
+            }}
+            style={{
+              display: "inline-block",
+              width: "100px",
+              height: "50px",
+              backgroundColor: "rgba(255,255,255,100)",
+              border: "3px solid #272727",
+              float: "right",
+              fontSize: "20px",
+            }}
+          >
+            Save
+          </button>
+          <button
+            onClick={() => {
+              this.saveableCanvas.clear();
+            }}
+            style={{
+              display: "inlinelock",
+              width: "100px",
+              height: "50px",
+              backgroundColor: "rgba(255,255,255,100)",
+              border: "3px solid #272727",
+              float: "right",
+              fontSize: "20px",
+            }}
+
+          >
+            Clear
+          </button>
+          <button
+            onClick={() => {
+              this.saveableCanvas.undo();
+            }}
+            style={{
+              display: "inline-block",
+              width: "100px",
+              height: "50px",
+              backgroundColor: "rgba(255,255,255,100)",
+              border: "3px solid #272727",
+              float: "right",
+              fontSize: "20px",
+            }}
+          >
+            Undo
+          </button>
 {/*     
         <h2>
 
