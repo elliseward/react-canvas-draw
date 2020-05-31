@@ -51,8 +51,6 @@ class Demo extends Component {
           
         </img>
         <h2>
-
-
         </h2>
         {/* <p>
           {" "} */}
@@ -141,13 +139,14 @@ class Demo extends Component {
             }}
             style={{
               display: "inline-block",
-              width: "200px",
-              height: "50px",
+              width: "230px",
+              height: "40px",
               backgroundColor: "#FFF",
               border: "3px solid #272727",
               float: "left",
-              fontSize: "20px",
+              fontSize: "16px",
               borderRadius: "10px",
+              margin: "0px 0px"
             }}
           >
             Hide Grid
@@ -315,7 +314,7 @@ class Demo extends Component {
               border: "1px solid #272727"
             }}
           /> */}
-        <div><br></br><br></br><br></br></div>
+
                   <button
             onClick={() => {
               localStorage.setItem(
@@ -325,14 +324,15 @@ class Demo extends Component {
             }}
             style={{
               display: "inline-block",
-              width: "80px",
-              height: "50px",
+              width: "70px",
+              height: "40px",
               backgroundColor: "rgba(255,255,255,100)",
               border: "3px solid #272727",
               float: "left",
-              fontSize: "20px",
-              margin: "0px 0px",
+              fontSize: "16px",
+              margin: "10px 0px",
               borderRadius: "10px",
+              clear: "left",
             }}
           >
             Save
@@ -343,13 +343,13 @@ class Demo extends Component {
             }}
             style={{
               display: "inlinelock",
-              width: "80px",
-              height: "50px",
+              width: "70px",
+              height: "40px",
               backgroundColor: "rgba(255,255,255,100)",
               border: "3px solid #272727",
               float: "left",
-              fontSize: "20px",
-              margin: "0px 10px",
+              fontSize: "16px",
+              margin: "10px 10px",
               borderRadius: "10px",
             }}
 
@@ -362,13 +362,13 @@ class Demo extends Component {
             }}
             style={{
               display: "inline-block",
-              width: "80px",
-              height: "50px",
+              width: "70px",
+              height: "40px",
               backgroundColor: "rgba(255,255,255,100)",
               border: "3px solid #272727",
               float: "left",
-              fontSize: "20px",
-              margin: "0px 0px",
+              fontSize: "16px",
+              margin: "10px 0px",
               borderRadius: "10px",
             }}
           >
@@ -416,7 +416,7 @@ class Demo extends Component {
               borderRadius: "35px", 
               float: "left",
               textAlign: "center",
-              margin: "20px 20px",
+              margin: "20px 10px",
             }}
             
           >
@@ -647,7 +647,9 @@ class Demo extends Component {
           </button> 
 
           </div>
-          <p></p>
+          <p><br></br></p>
+          <br>
+          </br>
           
         </div>
 

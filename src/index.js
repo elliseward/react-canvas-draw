@@ -73,7 +73,7 @@ export default class extends PureComponent {
     gridColor: "rgba(150,150,150,1)",
     backgroundColor: "#FFF",
     hideGrid: false,
-    canvasWidth: "70%", //900,
+    canvasWidth: "73%", //900,
     canvasHeight: 450,
     disabled: false,
     imgSrc: "",
