@@ -45,8 +45,8 @@ class Demo extends Component {
         </p> */}
         {/* <p>Try it out! Draw on this white canvas:</p> */}
         {/* <CanvasDraw onChange={() => console.log("onChange")} /> */}
-        <img src="demo/CenteredBorderLogo.png" alt="(Th)ink Logo" 
-        width="65%" height="50%" 
+        <img src="demo/TransparentRounded.png" alt="(Th)ink Logo" 
+        width="70%" height="70%"  
         >
           
         </img>
@@ -133,26 +133,23 @@ class Demo extends Component {
         {/* <CanvasDraw brushColor={this.state.color} brushRadius={this.state.brushRadius} gridColor={this.state.gridColor} hideGrid={this.state.hideGrid} /> */}
         <button
             onClick={() => {
-              this.setState({
-                hideGrid: !hideGrid,
-              });
+              this.saveableCanvas.undo();
             }}
             style={{
               display: "inline-block",
-              width: "230px",
-              height: "40px",
-              backgroundColor: "#FFF",
+              width: "30%",//"600px",
+              height: "50px",
+              backgroundColor: "rgba(255,255,255,100)",
               border: "3px solid #272727",
-              float: "left",
-              fontSize: "16px",
+              float: "right",
+              fontSize: "24px",
+              margin: "0px 0px",
               borderRadius: "10px",
-              margin: "0px 0px"
             }}
           >
-            Hide Grid
-          
+            Undo
           </button>
-          
+          <div><br></br><br></br><br></br></div>
 
           {/* <button
             onClick={() => {
@@ -324,13 +321,13 @@ class Demo extends Component {
             }}
             style={{
               display: "inline-block",
-              width: "70px",
+              width: "10.75%",//"110px"
               height: "40px",
               backgroundColor: "rgba(255,255,255,100)",
               border: "3px solid #272727",
               float: "left",
               fontSize: "16px",
-              margin: "10px 0px",
+              margin: "0px 0px",
               borderRadius: "10px",
               clear: "left",
             }}
@@ -343,13 +340,13 @@ class Demo extends Component {
             }}
             style={{
               display: "inlinelock",
-              width: "70px",
+              width: "10.75%",
               height: "40px",
               backgroundColor: "rgba(255,255,255,100)",
               border: "3px solid #272727",
               float: "left",
               fontSize: "16px",
-              margin: "10px 10px",
+              margin: "0px 12px",
               borderRadius: "10px",
             }}
 
@@ -358,21 +355,24 @@ class Demo extends Component {
           </button>
           <button
             onClick={() => {
-              this.saveableCanvas.undo();
+              this.setState({
+                hideGrid: !hideGrid,
+              });
             }}
             style={{
               display: "inline-block",
-              width: "70px",
+              width: "22.5%",
               height: "40px",
-              backgroundColor: "rgba(255,255,255,100)",
+              backgroundColor: "#FFF",
               border: "3px solid #272727",
               float: "left",
               fontSize: "16px",
-              margin: "10px 0px",
               borderRadius: "10px",
+              margin: "10px 0px"
             }}
           >
-            Undo
+            Hide Grid
+          
           </button>
           <p></p>
 
@@ -455,7 +455,7 @@ class Demo extends Component {
             }}
             style={{
               display: "block",
-              width: "60px",
+              width: "6%",
               height: "60px",
               backgroundColor: "rgba(255,0,0,1)",
               border: "3px solid #272727",
@@ -479,13 +479,13 @@ class Demo extends Component {
             }}
             style={{
               display: "block",
-              width: "60px",
+              width: "6%",
               height: "60px",
               backgroundColor: "rgba(255, 116, 0, 1)",
               border: "3px solid #272727",
               fontSize: "14px",
               float: "left",
-              margin: "10px 20px",
+              margin: "10px 26px",
               borderRadius: "10px",
               padding: "0px",
             }}
@@ -501,7 +501,7 @@ class Demo extends Component {
             }}
             style={{
               display: "block",
-              width: "60px",
+              width: "6%",
               height: "60px",
               backgroundColor: "rgba(255, 240, 0,1)",
               border: "3px solid #272727",
@@ -522,7 +522,7 @@ class Demo extends Component {
             }}
             style={{
               display: "block",
-              width: "60px",
+              width: "6%",
               height: "60px",
               backgroundColor: "rgba(62, 255, 0, 1)",
               border: "3px solid #272727",
@@ -544,13 +544,13 @@ class Demo extends Component {
             }}
             style={{
               display: "block",
-              width: "60px",
+              width: "6%",
               height: "60px",
               backgroundColor: "rgba(0, 197, 255, 1)",
               border: "3px solid #272727",
               fontSize: "15px",
               float: "left",
-              margin: "10px 20px",
+              margin: "10px 26px",
               borderRadius: "10px",
             }}
             
@@ -565,7 +565,7 @@ class Demo extends Component {
             }}
             style={{
               display: "block",
-              width: "60px",
+              width: "6%",
               height: "60px",
               backgroundColor: "rgba(0, 39, 255, 1)",
               border: "3px solid #272727",
@@ -587,7 +587,7 @@ class Demo extends Component {
             }}
             style={{
               display: "block",
-              width: "60px",
+              width: "6%",
               height: "60px",
               backgroundColor: "rgba(174, 0, 255 , 1)",
               border: "3px solid #272727",
@@ -610,13 +610,13 @@ class Demo extends Component {
             }}
             style={{
               display: "block",
-              width: "60px",
+              width: "6%",
               height: "60px",
               backgroundColor: "rgba(0, 0, 0 , 1)",
               border: "3px solid #272727",
               fontSize: "15px",
               float: "left",
-              margin: "10px 20px",
+              margin: "10px 26px",
               borderRadius: "10px",
               color: "#FFF",
             }}
@@ -632,7 +632,7 @@ class Demo extends Component {
             }}
             style={{
               display: "block",
-              width: "60px",
+              width: "6%",
               height: "60px",
               backgroundColor: "rgba(250, 250, 250 , 1)",
               border: "3px solid #272727",

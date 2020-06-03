@@ -66,7 +66,7 @@ export default class extends PureComponent {
   static defaultProps = {
     onChange: null,
     loadTimeOffset: 5,
-    lazyRadius: 12,
+    lazyRadius: 1,
     brushRadius: 10,
     brushColor: "#444",
     catenaryColor: "#0a0302",
@@ -74,7 +74,7 @@ export default class extends PureComponent {
     backgroundColor: "#FFF",
     hideGrid: false,
     canvasWidth: "73%", //900,
-    canvasHeight: 450,
+    canvasHeight: 459,
     disabled: false,
     imgSrc: "",
     saveData: "",
