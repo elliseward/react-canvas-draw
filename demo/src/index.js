@@ -64,12 +64,11 @@ class Demo extends Component {
         {/* <p>Try it out! Draw on this white canvas:</p> */}
         {/* <CanvasDraw onChange={() => console.log("onChange")} /> */}
         <img src="demo/TransparentRounded.png" alt="(Th)ink Logo" 
-        width="70%" height="70%"  
+        width="60%" height="60%"  
         >
           
         </img>
-        <h2>
-        </h2>
+
         {/* <p>
           {" "} */}
           {/* <span>{`<CanvasDraw brushColor={this.state.color} />`}</span>. */}
@@ -161,13 +160,13 @@ class Demo extends Component {
               border: "3px solid #272727",
               float: "right",
               fontSize: "24px",
-              margin: "0px 0px",
+              margin: "160px 0px 10px 0px",
               borderRadius: "10px",
             }}
           >
             Undo
           </button>
-          <div><br></br><br></br><br></br></div>
+          {/* <div><br></br><br></br><br></br></div> */}
 
           {/* <button
             onClick={() => {
@@ -313,7 +312,8 @@ class Demo extends Component {
         <CanvasDraw
           ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
           brushColor={this.state.color} brushRadius={this.state.brushRadius} gridColor={this.state.gridColor} hideGrid={this.state.hideGrid}//"rgba(255,255,0,.50)"
-          //imgSrc="https://upload.wikimedia.org/wikipedia/commons/c/cb/Coloring_kids_games_to_play.png"
+          imgSrc="demo/BWSticker.png"
+          //"https://upload.wikimedia.org/wikipedia/commons/c/cb/Coloring_kids_games_to_play.png"
           
         />
         <div > 
@@ -656,7 +656,7 @@ class Demo extends Component {
               border: "3px solid #272727",
               fontSize: "15px",
               float: "left",
-              margin: "10px 0px",
+              margin: "10px 0px 110px 0px",
               borderRadius: "10px",
             }}
             
