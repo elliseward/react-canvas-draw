@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-
+// import WebSocket from "ws";
 import CanvasDraw from "../../src";
 import classNames from "./index.css";
 
@@ -13,16 +13,47 @@ class Demo extends Component {
     lazyRadius: 0,
     gridColor: "rgba(150,150,150,1)",
     hideGrid: false,
+    currX: 0,
+    currY: 0,
   };
+
+  //flexSocket = new WebSocket('ws://localhost:5001');
+  flexSocket = new WebSocket('ws://127.0.0.1:5001/');
   componentDidMount() {
+    document.onmousemove = (event) => {
+      this.currX = event.clientX;
+      this.currY = event.clientY;
+    }
+
     this.setState({
       color: "#ff2600"//"rgba(255,255,0,1)",
     });
-    // window.setInterval(() => {
-    //   this.setState({
-    //     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
-    //   });
-    // }, 2000);
+    this.flexSocket.onopen = () => {
+      console.log('connected');
+    }
+
+    this.flexSocket.onmessage = e => {
+      const msg = JSON.parse(e.data);
+      if (msg.click == 1) {
+        console.log(this.currX);
+        console.log(this.currY);
+        // let event = new MouseEvent("mousedown", {
+        //   bubbles: true,
+        //   cancelable: true,
+        //   clientX: this.currX,
+        //   clientY: this.currY
+        // });
+        // document.dispatchEvent(event);
+        document.elementFromPoint(this.currX, this.currY).click();
+        //document.elementFromPoint(this.currX, this.currY).dispatchEvent(new MouseEvent('mousedown'));
+        //document.getElementById('canvas').dispatchEvent(new MouseEvent('mousedown'));
+      }
+      console.log(msg);
+    }
+
+    this.flexSocket.onclose = () => {
+      console.log('bye');
+    }
   }
 
 
