@@ -99,6 +99,7 @@ export default class extends PureComponent {
     this.isPressing = false;
   }
 
+  flexSocket = new WebSocket('ws://127.0.0.1:5001/');
   componentDidMount() {
     this.lazy = new LazyBrush({
       radius: this.props.lazyRadius * window.devicePixelRatio,
@@ -107,7 +108,9 @@ export default class extends PureComponent {
         x: window.innerWidth / 2,
         y: window.innerHeight / 2
       }
+
     });
+
     this.chainLength = this.props.lazyRadius * window.devicePixelRatio;
 
     this.canvasObserver = new ResizeObserver((entries, observer) =>
@@ -138,6 +141,26 @@ export default class extends PureComponent {
         this.loadSaveData(this.props.saveData);
       }
     }, 100);
+      this.flexSocket.onopen = () => {
+        console.log('connected');
+      }
+  
+      this.flexSocket.onmessage = e => {
+        const msg = JSON.parse(e.data);
+        if (msg.click == 1) {
+          this.isDrawing = !this.isDrawing;
+          this.saveLine();
+        }
+  //       if (msg.click == 1) {
+  //         this.isDrawing = true;
+  //       } else {
+  //         this.isDrawing = false;
+  //       }
+      }
+  
+      this.flexSocket.onclose = () => {
+        console.log('bye');
+      }
   }
 
   componentDidUpdate(prevProps) {

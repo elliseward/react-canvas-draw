@@ -17,43 +17,30 @@ class Demo extends Component {
     currY: 0,
   };
 
-  //flexSocket = new WebSocket('ws://localhost:5001');
   flexSocket = new WebSocket('ws://127.0.0.1:5001/');
   componentDidMount() {
-    document.onmousemove = (event) => {
-      this.currX = event.clientX;
-      this.currY = event.clientY;
-    }
-
-    this.setState({
-      color: "#ff2600"//"rgba(255,255,0,1)",
-    });
-    this.flexSocket.onopen = () => {
-      console.log('connected');
-    }
-
-    this.flexSocket.onmessage = e => {
-      const msg = JSON.parse(e.data);
-      if (msg.click == 1) {
-        console.log(this.currX);
-        console.log(this.currY);
-        // let event = new MouseEvent("mousedown", {
-        //   bubbles: true,
-        //   cancelable: true,
-        //   clientX: this.currX,
-        //   clientY: this.currY
-        // });
-        // document.dispatchEvent(event);
-        document.elementFromPoint(this.currX, this.currY).click();
-        //document.elementFromPoint(this.currX, this.currY).dispatchEvent(new MouseEvent('mousedown'));
-        //document.getElementById('canvas').dispatchEvent(new MouseEvent('mousedown'));
-      }
-      console.log(msg);
-    }
-
-    this.flexSocket.onclose = () => {
-      console.log('bye');
-    }
+      document.onmousemove = (event) => {
+        this.currX = event.clientX;
+        this.currY = event.clientY;
+      }
+      this.setState({
+        color: "#ff2600"//"rgba(255,255,0,1)",
+      });
+      this.flexSocket.onopen = () => {
+        console.log('WELP');
+      }
+  
+      this.flexSocket.onmessage = e => {
+        const msg = JSON.parse(e.data);
+        if (msg.click == 1) {
+          document.elementFromPoint(this.currX, this.currY).click();
+        }
+        console.log(msg);
+      }
+  
+      this.flexSocket.onclose = () => {
+        console.log('bye');
+       }
   }
 
 
