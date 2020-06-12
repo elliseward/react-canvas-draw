@@ -43,7 +43,7 @@ const dimensionsPropTypes = PropTypes.oneOfType([
   PropTypes.string
 ]);
 
-export default class extends PureComponent {
+export default class extends PureComponent { 
   static propTypes = {
     onChange: PropTypes.func,
     loadTimeOffset: PropTypes.number,
@@ -63,25 +63,26 @@ export default class extends PureComponent {
     hideInterface: PropTypes.bool
   };
 
-  static defaultProps = {
+  static defaultProps = { //initial parameters of canvas
     onChange: null,
     loadTimeOffset: 5,
-    lazyRadius: 1,
-    brushRadius: 10,
-    brushColor: "#444",
-    catenaryColor: "#0a0302",
-    gridColor: "rgba(150,150,150,1)",
-    backgroundColor: "#FFF",
-    hideGrid: false,
-    canvasWidth: "73%", //900,
-    canvasHeight: 459,
+    lazyRadius: 1, // spacing between the cursor and the pen actually drawing on the canvas
+    brushRadius: 10, // size of pen
+    brushColor: "#444", // color of pen
+    catenaryColor: "#0a0302", // color of pen
+    gridColor: "rgba(150,150,150,1)", // color of background grid, present on blank canvas (light gray)
+    backgroundColor: "#FFF", //color of canvas background (white)
+    hideGrid: false, // true = do not show grid
+                    // false = show grid
+    canvasWidth: "73%", // width of canvas automatically adjusts to screen size
+    canvasHeight: 459, // constant canvas height
     disabled: false,
-    imgSrc: "",
+    imgSrc: "", //adding the ability to upload a photo template to the coloring book canvas
     saveData: "",
     immediateLoading: false,
-    hideInterface: false
+    hideInterface: false, // ability to hide buttons on the canvas screen
   };
-
+//creating the canvas commands
   constructor(props) {
     super(props);
 
@@ -98,7 +99,8 @@ export default class extends PureComponent {
     this.isDrawing = false;
     this.isPressing = false;
   }
-
+// Listener Socket: Using websockets with TCP protocol, recieve EMG signals to click on canvas element
+// from port 5001 after being processed with our Python script.
   flexSocket = new WebSocket('ws://127.0.0.1:5001/');
   componentDidMount() {
     this.lazy = new LazyBrush({

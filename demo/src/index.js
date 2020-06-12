@@ -16,30 +16,31 @@ class Demo extends Component {
     currX: 0,
     currY: 0,
   };
-
+// Listener Socket: Using websockets with TCP protocol, recieve EMG signals 
+// from port 5001 after being processed with our Python script.
   flexSocket = new WebSocket('ws://127.0.0.1:5001/');
   componentDidMount() {
       document.onmousemove = (event) => {
-        this.currX = event.clientX;
-        this.currY = event.clientY;
+        this.currX = event.clientX; // cursor X position
+        this.currY = event.clientY; // cursor Y position
       }
       this.setState({
-        color: "#ff2600"//"rgba(255,255,0,1)",
+        color: "#ff2600", // set initial color of pen
       });
       this.flexSocket.onopen = () => {
-        console.log('WELP');
+        console.log('OPEN'); // checking to see if socket is open
       }
   
       this.flexSocket.onmessage = e => {
         const msg = JSON.parse(e.data);
         if (msg.click == 1) {
-          document.elementFromPoint(this.currX, this.currY).click();
+          document.elementFromPoint(this.currX, this.currY).click(); // Click at current cursor position
         }
         console.log(msg);
       }
   
       this.flexSocket.onclose = () => {
-        console.log('bye');
+        console.log('bye'); // Closing web socket
        }
   }
 
@@ -47,290 +48,46 @@ class Demo extends Component {
   render() {
     return (
       <div>
-        {/* <h1>(Th)ink Canvas</h1> */}
-        {/* <iframe
-          title="GitHub link"
-          src="https://ghbtns.com/github-btn.html?user=embiem&repo=react-canvas-draw&type=star&count=true"
-          frameBorder="0"
-          scrolling="0"
-          width="160px"
-          height="30px"
-        /> */}
-        {/* <h2>default</h2> */}
-        {/* <p>
-          This is a simple <span>{`<CanvasDraw />`}</span> component with
-          default values.
-        </p> */}
-        {/* <p>Try it out! Draw on this white canvas:</p> */}
-        {/* <CanvasDraw onChange={() => console.log("onChange")} /> */}
-        <img src="demo/TransparentRounded.png" alt="(Th)ink Logo" 
-        width="60%" height="60%"  
+       
+        <img src="demo/TransparentRounded.png" alt="(Th)ink Logo"  //Imported (Th)ink logo, adjusts size as screen size changes
+        width="60%" height="60%"   // % of screen size
         >
           
         </img>
-
-        {/* <p>
-          {" "} */}
-          {/* <span>{`<CanvasDraw brushColor={this.state.color} />`}</span>. */}
-          {/* Color changes every 2 seconds:
-        </p> */}
-        {/* <div> */}
-          {/* Current color:{" "}
-          <div
-            style={{
-              display: "inline-block",
-              width: "20px",
-              height: "20px",
-              backgroundColor: this.state.color,
-              border: "1px solid #272727"
-            }}
-          /> */}
-{/* 
-          <button
-            onClick={() => {
-              this.setState({
-                brushRadius: "15",
-              });
-            }}
-            style={{
-              display: "inline-block",
-              width: "90px",
-              height: "90px",
-              backgroundColor: "#FFF",
-              border: "3px solid #272727",
-              borderRadius: "55px", 
-              fontSize : "24px",
-              float: "right"
-            }}
-            
-          >
-            Large
-          </button>
-          <button
-            onClick={() => {
-              this.setState({
-                brushRadius: "10",
-              });
-            }}
-            style={{
-              display: "inline-block",
-              width: "70px",
-              height: "70px",
-              fontSize: "15px",
-              backgroundColor: "#FFF",
-              border: "3px solid #272727",
-              borderRadius: "35px", 
-              float: "right"
-            }}
-            
-          >
-          Medium
-          </button>
-          <button
-            onClick={() => {
-              this.setState({
-                brushRadius: "5",
-              });
-            }}
-            style={{
-              display: "inline-block",
-              width: "50px",
-              height: "50px",
-              backgroundColor: "#FFF",
-              fontSize : "14px",
-              border: "3px solid #272727",
-              borderRadius: "25px", 
-              float: "right"
-            }}
-            
-          >
-            Small
-          </button>
-        </div> */}
-        {/* <CanvasDraw brushColor={this.state.color} brushRadius={this.state.brushRadius} gridColor={this.state.gridColor} hideGrid={this.state.hideGrid} /> */}
-        <button
+        
+        <button // Creating the UNDO button on the canvas. The button definitions 
+                // below define the design and display of the buttons.
             onClick={() => {
               this.saveableCanvas.undo();
             }}
             style={{
-              display: "inline-block",
-              width: "30%",//"600px",
-              height: "50px",
-              backgroundColor: "rgba(255,255,255,100)",
-              border: "3px solid #272727",
-              float: "right",
-              fontSize: "24px",
-              margin: "160px 0px 10px 0px",
-              borderRadius: "10px",
+              display: "inline-block", //stacking in relation to other buttons
+              width: "30%", // width of button will be auto adjust to be 30% of screen width
+              height: "50px", //h eight of button
+              backgroundColor: "rgba(255,255,255,100)", // White background color of button
+              border: "3px solid #272727", // black border
+              float: "right", // side of page for button to align with (left or right)
+              fontSize: "24px", // size of text for button label
+              margin: "160px 0px 10px 0px", //spacing between button and other elements on the screen
+              borderRadius: "10px", // slightly rounded edges on the button border
             }}
+            // insert below the button label
           >
-            Undo
+            Undo 
           </button>
-          {/* <div><br></br><br></br><br></br></div> */}
-
-          {/* <button
-            onClick={() => {
-              this.setState({
-                color: "rgba(255,255,0,.500)"
-              });
-            }}
-            style={{
-              display: "block",
-              width: "60px",
-              height: "60px",
-              backgroundColor: "rgba(255,255,0,1)",
-              border: "3px solid #272727",
-              fontSize: "15px",
-              float: "right"
-            }}
-            
-          >
-            Yellow
-          </button>
-          <button
-            onClick={() => {
-              this.setState({
-                color: "rgba(60,235,0,0.5)"
-              });
-            }}
-            style={{
-              display: "block",
-              width: "60px",
-              height: "60px",
-              backgroundColor: "rgba(60,235,0,1)",
-              border: "3px solid #272727",
-              fontSize: "15px",
-              float: "right"
-            }}
-            
-          >
-            Green
-          </button>
-          <button
-            onClick={() => {
-              this.setState({
-                color: "rgba(255,67,73,0.5)"
-              });
-            }}
-            style={{
-              display: "block",
-              width: "60px",
-              height: "60px",
-              backgroundColor: "rgba(255,67,73,1)",
-              border: "3px solid #272727",
-              fontSize: "15px",
-              float: "right"
-            }}
-            
-          >
-            Red
-          </button> */}
-
-
-          {/* <button
-            onClick={() => {
-              this.setState({
-                brushRadius: "15",
-              });
-            }}
-            style={{
-              display: "inline-block",
-              width: "90px",
-              height: "90px",
-              backgroundColor: "#FFF",
-              border: "3px solid #272727",
-              borderRadius: "55px", 
-              fontSize : "24px",
-              float: "right"
-            }}
-            
-          >
-            Large
-          </button>
-          <button
-            onClick={() => {
-              this.setState({
-                brushRadius: "10",
-              });
-            }}
-            style={{
-              display: "inline-block",
-              width: "70px",
-              height: "70px",
-              fontSize: "15px",
-              backgroundColor: "#FFF",
-              border: "3px solid #272727",
-              borderRadius: "35px", 
-              float: "right",
-              clear: "left"
-            }}
-            
-          >
-          Medium
-          </button>
-          <button
-            onClick={() => {
-              this.setState({
-                brushRadius: "5",
-              });
-            }}
-            style={{
-              display: "inline-block",
-              width: "50px",
-              height: "50px",
-              backgroundColor: "#FFF",
-              fontSize : "14px",
-              border: "3px solid #272727",
-              borderRadius: "25px", 
-              float: "right"
-            }}
-            
-          >
-            Small
-          </button> */}
-        {/* <p>
-          <p></p>
-        </p>
-        <h2>(Th)ink Coloring Book</h2>
-        <p></p>
-        <p>
-        </p>    
-        <h4>Use buttons to select colors, save image, undo last stroke and clear page. </h4> */}
-        {/* <div>
-          Current color:{" "}
-          <div
-            style={{
-              display: "inline-block",
-              width: "20px",
-              height: "20px",
-              backgroundColor: this.state.color, 
-              border: "1px solid #272727"
-            }}
-          />
-        </div> */}
 
         <CanvasDraw
           ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
           brushColor={this.state.color} brushRadius={this.state.brushRadius} gridColor={this.state.gridColor} hideGrid={this.state.hideGrid}//"rgba(255,255,0,.50)"
           imgSrc="demo/BWSticker.png"
-          //"https://upload.wikimedia.org/wikipedia/commons/c/cb/Coloring_kids_games_to_play.png"
+          //"https://upload.wikimedia.org/wikipedia/commons/c/cb/Coloring_kids_games_to_play.png" // another option for coloring template
           
         />
         <div > 
-          {/* className={classNames.tools} */}
+    
           <div>
-          {/* Current color:{" "}
-          <div
-            style={{
-              display: "inline-block",
-              width: "20px",
-              height: "20px",
-              backgroundColor: this.state.color,
-              border: "1px solid #272727"
-            }}
-          /> */}
 
-                  <button
+        <button // Creating the SAVE button. Control options for the UNDO button repeated here.
             onClick={() => {
               localStorage.setItem(
                 "savedDrawing",
@@ -352,7 +109,7 @@ class Demo extends Component {
           >
             Save
           </button>
-          <button
+          <button // Creating the CLEAR button. Control options for the UNDO button repeated here.
             onClick={() => {
               this.saveableCanvas.clear();
             }}
@@ -367,11 +124,11 @@ class Demo extends Component {
               margin: "0px 12px",
               borderRadius: "10px",
             }}
-
           >
             Clear
           </button>
-          <button
+          <button // Creating the HIDE GRID button. Each time this button is clicked, it will toggle the grid to be on or off.
+                  // Control options for the UNDO button repeated here.
             onClick={() => {
               this.setState({
                 hideGrid: !hideGrid,
@@ -394,10 +151,10 @@ class Demo extends Component {
           </button>
           <p></p>
 
-          <button
+          <button // Creating the button that changes the pen size to LARGE. Control options for the UNDO button repeated here.
             onClick={() => {
               this.setState({
-                brushRadius: "10",
+                brushRadius: "10", // set pen size
               });
             }}
             style={{
@@ -418,7 +175,7 @@ class Demo extends Component {
             Large
           </button>
  
-          <button
+          <button // Creating the button that changes the pen size to MEDIUM. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
                 brushRadius: "5",
@@ -441,7 +198,7 @@ class Demo extends Component {
           Medium
           </button>
 
-          <button
+          <button // Creating the button that changes the pen size to MEDIUM. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
                 brushRadius: "1",
@@ -465,10 +222,10 @@ class Demo extends Component {
           
           </div>
           <div>
-          <button
+          <button // Creating the button that changes the pen color to RED. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
-                color: "rgba(255,0,0,.800)"
+                color: "rgba(255,0,0,.800)" // (r,g,b,transparency 0-->1)
               });
             }}
             style={{
@@ -489,7 +246,7 @@ class Demo extends Component {
             Red
           </button>
           
-          <button
+          <button // Creating the button that changes the pen color to ORANGE. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
                 color: "rgba(255, 116, 0, 0.8)"
@@ -505,13 +262,13 @@ class Demo extends Component {
               float: "left",
               margin: "10px 26px",
               borderRadius: "10px",
-              padding: "0px",
+              padding: "0px", // spacing between the button border and the text label
             }}
             
           >
             Orange
           </button>
-          <button
+          <button // Creating the button that changes the pen color to YELLOW. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
                 color: "rgba(255, 240, 0, 0.8)"
@@ -532,7 +289,7 @@ class Demo extends Component {
           >
             Yellow
           </button>  
-          <button
+          <button // Creating the button that changes the pen color to GREEN. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
                 color: "rgba(62, 255, 0, 0.8)"
@@ -554,7 +311,7 @@ class Demo extends Component {
           >
             Green
           </button>  
-          <button
+          <button // Creating the button that changes the pen color to BLUE. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
                 color: "rgba(0, 197, 255, 0.8)"
@@ -575,7 +332,7 @@ class Demo extends Component {
           >
             Blue
           </button> 
-          <button
+          <button // Creating the button that changes the pen color to INDIGO. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
                 color: "rgba(0, 39, 255, 0.8)"
@@ -591,13 +348,13 @@ class Demo extends Component {
               float: "left",
               margin: "10px 0px",
               borderRadius: "10px",
-              color: "#FFF",
+              color: "#FFF", //color of button text label (white)
             }}
             
           >
             Indigo
           </button> 
-          <button
+          <button // Creating the button that changes the pen color to PURPLE. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
                 color: "rgba(174, 0, 255 , 0.8)"
@@ -614,13 +371,13 @@ class Demo extends Component {
               margin: "10px 0px",
               borderRadius: "10px",
               color: "#FFF",
-              clear: "left"
+              clear: "left" // switching to a new line on the screen to stack buttons vertically
             }}
             
           >
             Purple
           </button> 
-          <button
+          <button // Creating the button that changes the pen color to BLACK. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
                 color: "rgba(0, 0, 0 , 0.8)"
@@ -642,7 +399,7 @@ class Demo extends Component {
           >
             Black
           </button> 
-          <button
+          <button // Creating the button that changes the pen color to WHITE. Control options for the UNDO button repeated here
             onClick={() => {
               this.setState({
                 color: "rgba(250, 250, 250 , 0.8)"
@@ -671,134 +428,7 @@ class Demo extends Component {
           
         </div>
 
-        
-                  
-{/*     
-        <h2>
 
-          
-        </h2>
-        <p>
-          
-          To hide the UI elements, set the `hideInterface` prop. You can also hide the grid with the `hideGrid` prop.</p>
-        <CanvasDraw hideInterface hideGrid />
-        <h2>Save & Load</h2>
-        <p>
-          This part got me most excited. Very easy to use saving and loading of
-          drawings. It even comes with a customizable loading speed to control
-          whether your drawing should load instantly (loadTimeOffset = 0) or
-          appear after some time (loadTimeOffset > 0){" "}
-          <span>{`<CanvasDraw loadTimeOffset={10} />`}</span>
-        </p>
-        <p>Try it out! Draw something, hit "Save" and then "Load".</p>
-        <div className={classNames.tools}>
-          <button
-            onClick={() => {
-              localStorage.setItem(
-                "savedDrawing",
-                this.saveableCanvas.getSaveData()
-              );
-            }}
-          >
-            Save
-          </button>
-          <button
-            onClick={() => {
-              this.saveableCanvas.clear();
-            }}
-          >
-            Clear
-          </button>
-          <button
-            onClick={() => {
-              this.saveableCanvas.undo();
-            }}
-          >
-            Undo
-          </button>
-          <div>
-            <label>Width:</label>
-            <input
-              type="number"
-              value={this.state.width}
-              onChange={e =>
-                this.setState({ width: parseInt(e.target.value, 10) })
-              }
-            />
-          </div>
-          <div>
-            <label>Height:</label>
-            <input
-              type="number"
-              value={this.state.height}
-              onChange={e =>
-                this.setState({ height: parseInt(e.target.value, 10) })
-              }
-            />
-          </div>
-          <div>
-            <label>Brush-Radius:</label>
-            <input
-              type="number"
-              value={this.state.brushRadius}
-              onChange={e =>
-                this.setState({ brushRadius: parseInt(e.target.value, 10) })
-              }
-            />
-          </div>
-          <div>
-            <label>Lazy-Radius:</label>
-            <input
-              type="number"
-              value={this.state.lazyRadius}
-              onChange={e =>
-                this.setState({ lazyRadius: parseInt(e.target.value, 10) })
-              }
-            />
-          </div>
-        </div>
-        <CanvasDraw
-          ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
-          brushColor={this.state.color}
-          brushRadius={this.state.brushRadius}
-          lazyRadius={this.state.lazyRadius}
-          canvasWidth={this.state.width}
-          canvasHeight={this.state.height}
-        />
-        <p>
-          The following is a disabled canvas with a hidden grid that we use to
-          load & show your saved drawing.
-        </p>
-        <button
-          onClick={() => {
-            this.loadableCanvas.loadSaveData(
-              localStorage.getItem("savedDrawing")
-            );
-          }}
-        >
-          Load what you saved previously into the following canvas. Either by
-          calling `loadSaveData()` on the component's reference or passing it
-          the `saveData` prop:
-        </button> */}
-        {/* <CanvasDraw
-          disabled
-          hideGrid
-          ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
-          saveData={localStorage.getItem("savedDrawing")}
-        />
-        <p>
-          The saving & loading also takes different dimensions into account.
-          Change the width & height, draw something and save it and then load it
-          into the disabled canvas. It will load your previously saved
-          masterpiece scaled to the current canvas dimensions.
-        </p>
-        <p>
-          That's it for now! Take a look at the{" "}
-          <a href="https://github.com/mBeierl/react-canvas-draw/tree/master/demo/src">
-            source code of these examples
-          </a>
-          .
-        </p> */}
       </div>
     );
   }
